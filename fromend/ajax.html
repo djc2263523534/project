@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="./ajax.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+
+
+        form {
+            width: 220px;
+            height: 200px;
+            border: 1px solid #ccc;
+            position: absolute;
+            right: 200px;
+            top: 70px;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .list {
+            margin: auto;
+            width: 50%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table class="list">
+
+    </table>
+    <form>
+        <label for="usersname">账号</label>
+        <input type="text" name="usersName" id="usersname"><br>
+        <label for="password">密码</label>
+        <input type="password" name="passWord" id="password">
+        <p><input type="submit" value="保存" id="sub"></p>
+    </form>
+
+
+
+</body>
+
+</html>
