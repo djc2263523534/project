@@ -65,9 +65,4 @@ $(function () {
 
 
 
-
-
-
-    console.log('我是修改后的');
-
 })
