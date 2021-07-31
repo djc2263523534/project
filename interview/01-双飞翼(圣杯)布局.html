@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            height: 500px;
+            background-color: pink;
+        }
+
+        .left {
+            float: left;
+            width: 200px;
+            height: 400px;
+            background-color: blue;
+        }
+
+        .right {
+            float: right;
+            width: 200px;
+            height: 400px;
+            background-color: blue;
+        }
+
+        .center {
+            height: 450px;
+            background-color: green;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- 注意:left 和 right 必须放在 center 前面 -->
+    <div class="father">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">321151</div>
+    </div>
+
+</body>
+
+</html>
