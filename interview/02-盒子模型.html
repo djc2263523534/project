@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            box-sizing: content-box;
+        }
+
+        .box2 {
+            box-sizing: border-box;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 20px auto;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+            border: 10px solid skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">标准盒子模型</div> 宽度=padding+ border + 自身高度
+    <div class="box2">怪异盒子模型</div> 宽度= 自身高度
+</body>
+
+</html>
