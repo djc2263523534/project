@@ -7,90 +7,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .father {
-            height: 500px;
-            background-color: pink;
+        .main {
+            background-color: red;
+            width: 100%;
+        }
+
+        .main-wrapper {
+            margin-left: 50px;
+            margin-right: 100px;
         }
 
         .left {
-            float: left;
-            width: 200px;
-            height: 400px;
-            background-color: blue;
+            background-color: salmon;
+            width: 50px;
+            margin-left: -100%;
         }
 
         .right {
-            float: right;
-            width: 200px;
-            height: 400px;
-            background-color: blue;
+            background-color: sandybrown;
+            width: 100px;
+            margin-left: -100px;
         }
 
-        .center {
-            height: 450px;
-            background-color: green;
-            overflow: hidden;
+        .content {
+            float: left;
         }
     </style>
+
 </head>
 
 <body>
-
-
-    <!-- 注意:left 和 right 必须放在 center 前面 -->
-    <div class="father">
-        <div class="left"></div>
-        <div class="right"></div>
-        <div class="center">321151</div>
+    <!-- 圣杯布局 -->
+    <!-- <div class="header">头部</div>
+    <div class="main">
+        <div class="center content">center</div>
+        <div class="left content">left</div>
+        <div class="right content">right</div>
     </div>
+    <div class="footer">底部</div> -->
 
-    <!DOCTYPE html>
-    <html>
-
-    <head lang="en">
-        <meta charset="UTF-8">
-        <title>模拟表格</title>
-    </head>
-
-    <body>
-
-        <style type="text/css" rel="stylesheet">
-            .table {
-                display: table;
-                border: 1px solid #cccccc;
-                margin: 5px;
-                /*display: table时padding会失效*/
-            }
-
-            .row {
-                display: table-row;
-                border: 1px solid #cccccc;
-                /*display: table-row时margin、padding同时失效*/
-            }
-
-            .cell {
-                display: table-cell;
-                border: 1px solid #cccccc;
-                padding: 5px;
-                /*display: table-cell时margin会失效*/
-            }
-        </style>
-        <div class="table">
-            <div class="row">
-                <div class="cell">张三</div>
-                <div class="cell">李四</div>
-                <div class="cell">王五</div>
-            </div>
-            <div class="row">
-                <div class="cell">张三</div>
-                <div class="cell">李四</div>
-                <div class="cell">王五</div>
-            </div>
-        </div>
-    </body>
-
-    </html>
-
+    <!-- 双飞翼布局 -->
+    <div class="main content">
+        <div class="main-wrapper">main</div>
+    </div>
+    <div class="left content">left</div>
+    <div class="right content">right</div>
 </body>
 
 </html>

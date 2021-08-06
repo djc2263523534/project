@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            background-color: skyblue;
+            width: 100%;
+
+        }
+
+        .main-wrapper {
+            margin-left: 100px;
+            margin-right: 50px;
+        }
+
+
+
+        .left {
+            background-color: springgreen;
+            width: 100px;
+            margin-left: -100%;
+        }
+
+        .right {
+            background-color: slateblue;
+            width: 50px;
+            margin-left: -50px;
+        }
+
+        .col {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main col">
+        <div class="main-wrapper">main</div>
+    </div>
+    <div class="left col">left</div>
+    <div class="right col">right</div>
+
+    <!-- 
+        主体内容包裹  中间内容用margin 挤开左右距离
+        元素浮动  左拖距离
+
+
+     -->
+</body>
+
+</html>
