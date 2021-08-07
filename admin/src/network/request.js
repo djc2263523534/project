@@ -7,5 +7,14 @@ export function request(config) {
         timeout: 5000
     })
 
+    instancel.interceptors.request.use(config => {
+
+        config.headers.Authorization = sessionStorage.getItem('token')
+
+        return config
+    })
+
+
+
     return instancel(config)
 }

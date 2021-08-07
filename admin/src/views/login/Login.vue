@@ -42,7 +42,6 @@
 
 <script>
 import { getLogin } from "network/login";
-
 export default {
   name: "Login",
   data() {

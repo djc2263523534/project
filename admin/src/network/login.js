@@ -7,3 +7,10 @@ export function getLogin(params) {
         params,
     })
 }
+
+
+export function getHomeList() {
+    return request({
+        url: 'menus'
+    })
+}
