@@ -5,7 +5,7 @@
       <el-header>
         <div class="header-info">
           <!-- <img src="~assets/img/touxiang.jpg" alt="" /> -->
-          电商后台管理系统
+          后台管理系统
         </div>
         <el-button type="info" round size="small" @click="logout"
           >退出</el-button
@@ -14,7 +14,8 @@
       <el-container>
         <!-- 侧边栏区域 -->
         <el-aside :width="menuShow ? '64px' : '200px'">
-          <div class="btn" @click="btnClick">|||</div>
+          <!-- 一级菜单 -->
+          <div class="btn" @click="btnClick"><i class="el-icon-more"></i></div>
           <el-menu
             background-color="#373d41"
             text-color="#fff"

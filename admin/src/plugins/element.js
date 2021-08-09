@@ -10,7 +10,12 @@ import {
     Menu, Submenu, MenuItem,
     Breadcrumb, BreadcrumbItem,
     Card,
-    Row, Col
+    Row, Col,
+    Table, TableColumn,
+    Switch,
+    Tooltip,
+    Pagination,
+    Dialog
 } from 'element-ui';
 Vue.use(Button)
 Vue.use(Form)
@@ -28,5 +33,11 @@ Vue.use(BreadcrumbItem)
 Vue.use(Card)
 Vue.use(Row)
 Vue.use(Col)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Switch)
+Vue.use(Tooltip)
+Vue.use(Pagination)
+Vue.use(Dialog)
 //消息弹框需要全局挂载
 Vue.prototype.$message = Message
