@@ -72,18 +72,12 @@
               ></el-button>
             </el-tooltip>
 
-            <el-tooltip
-              class="item"
-              effect="dark"
-              content="删除"
-              placement="top"
-            >
-              <el-button
-                type="danger"
-                icon="el-icon-delete"
-                size="mini"
-              ></el-button>
-            </el-tooltip>
+            <el-button
+              type="danger"
+              icon="el-icon-delete"
+              size="mini"
+              @click="deleteUsers(scope.row.id)"
+            ></el-button>
 
             <el-tooltip
               class="item"
@@ -173,9 +167,7 @@
 
       <span slot="footer" class="dialog-footer">
         <el-button @click="edialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="edialogVisible = false"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="etitUsers">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -248,10 +240,7 @@ export default {
         ],
       },
       edialogVisible: false, //控制修改对话框的显示和隐藏
-      changeForm: {
-        username: "",
-        email: "",
-      },
+      changeForm: {}, //查询用户信息对象
       changeFormRules: {
         email: [
           { required: true, message: "请输入邮箱", trigger: "blur" },
@@ -315,15 +304,59 @@ export default {
         this.getUsersList();
       });
     },
-    //修改用户信息
+    //查询用户信息
     async mangeInfo(id) {
       const { data: res } = await setRequest().get(`users/${id}`);
       if (res.meta.status !== 200) return this.$message.error("查询用户失败");
       this.changeForm = res.data;
       this.edialogVisible = true;
     },
+    // 重置表单
     closeEdit() {
       this.$refs["changeFormRef"].resetFields();
+    },
+    //修改用户信息
+    etitUsers() {
+      this.$refs["changeFormRef"].validate(async (vaild) => {
+        if (!vaild) return;
+        const { data: res } = await setRequest().put(
+          `users/${this.changeForm.id}`,
+          {
+            email: this.changeForm.email,
+            mobile: this.changeForm.mobile,
+          }
+        );
+        if (res.meta.status !== 200) return $message.error("修改失败");
+        this.$message({
+          type: "success",
+          message: "修改成功",
+        });
+        this.getUsersList();
+        this.edialogVisible = false;
+      });
+    },
+    // 删除用户信息
+    deleteUsers(id) {
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(async () => {
+          const { data: res } = await setRequest().delete(`users/${id}`);
+          if (res.meta.status !== 200) return this.$message.error("删除失败");
+          this.$message({
+            type: "success",
+            message: "删除成功",
+          });
+          this.getUsersList();
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
     },
   },
   created() {
