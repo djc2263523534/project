@@ -89,6 +89,7 @@
                 type="warning"
                 icon="el-icon-setting"
                 size="mini"
+                @click="setUsers(scope.row)"
               ></el-button>
             </el-tooltip>
           </template>
@@ -168,6 +169,35 @@
       <span slot="footer" class="dialog-footer">
         <el-button @click="edialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="etitUsers">确 定</el-button>
+      </span>
+    </el-dialog>
+    <!-- 分配角色 -->
+
+    <el-dialog
+      title="提示"
+      :visible.sync="setDialogVisible"
+      width="30%"
+      :before-close="handleClose"
+    >
+      <p>当前的用户：{{ info.username }}</p>
+      <p>当前的角色：{{ info.role_name }}</p>
+      <p>
+        下拉菜单：
+        <el-select v-model="value" placeholder="请选择">
+          <el-option
+            v-for="item in options"
+            :key="item.id"
+            :label="item.roleName"
+            :value="item.id"
+          >
+          </el-option>
+        </el-select>
+      </p>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="setDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="setDialogVisible = false"
+          >确 定</el-button
+        >
       </span>
     </el-dialog>
   </div>
@@ -251,6 +281,10 @@ export default {
           { validator: checkPhone, trigger: "blur" },
         ],
       },
+      setDialogVisible: false,
+      info: [],
+      value: "",
+      options: [],
     };
   },
   methods: {
@@ -357,6 +391,16 @@ export default {
             message: "已取消删除",
           });
         });
+    },
+    //分配角色
+    async setUsers(info) {
+      this.setDialogVisible = true;
+      this.info = info;
+
+      const { data: res } = await setRequest().get("roles");
+      console.log(res);
+      if (res.meta.status !== 200) return this.$message.error("分配权限失败");
+      this.options = res.data;
     },
   },
   created() {
