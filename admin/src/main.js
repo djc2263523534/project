@@ -12,6 +12,10 @@ import 'normalize.css'
 //2.使用element组件
 import './plugins/element.js'
 
+import ZkTable from 'vue-table-with-tree-grid'
+
+Vue.use(ZkTable)
+
 
 new Vue({
   router,

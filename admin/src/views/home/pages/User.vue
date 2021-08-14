@@ -195,9 +195,7 @@
       </p>
       <span slot="footer" class="dialog-footer">
         <el-button @click="setDialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="setDialogVisible = false"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="saveRolesInfo">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -394,6 +392,7 @@ export default {
     },
     //分配角色
     async setUsers(info) {
+      this.value = "";
       this.setDialogVisible = true;
       this.info = info;
 
@@ -401,6 +400,22 @@ export default {
       console.log(res);
       if (res.meta.status !== 200) return this.$message.error("分配权限失败");
       this.options = res.data;
+    },
+    async saveRolesInfo() {
+      if (!this.value) return this.$message.error("请选择分配的角色");
+      const { data: res } = await setRequest().put(
+        `users/${this.info.id}/role`,
+        {
+          rid: this.value,
+        }
+      );
+      if (res.meta.status !== 200) return this.$message.error("分配角色失败");
+      this.$message({
+        type: "success",
+        message: "分配角色成功",
+      });
+      this.getUsersList();
+      this.setDialogVisible = false;
     },
   },
   created() {
@@ -421,5 +436,8 @@ export default {
 }
 .el-pagination {
   margin-top: 20px;
+}
+/deep/ .cell {
+  text-align: center;
 }
 </style>
