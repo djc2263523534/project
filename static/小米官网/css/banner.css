@@ -1,0 +1,164 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+/* 网页版心 */
+.w{
+    width: 1226px;
+    margin: 0 auto;
+}
+a{
+    text-decoration: none;
+}
+ul,
+ol{
+    list-style-type: none;
+}
+img{
+    width: 1226px;
+    height: 460px;
+}
+.curent{
+    background-color: red !important;
+}
+/* banner部分 start */
+.banner{
+    position: relative;
+    margin: 0px auto;
+    width: 1226px;
+    height: 460px;
+    background-color: pink;
+}
+.banner .nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 234px;
+    height: 460px;
+}
+.nav-list{
+    width: 234px;
+    height: 420px;
+    padding: 20px 0;
+    background: rgba(102,119,119,.5);
+}
+.nav-item{
+    width: 234px;
+    height: 42px;
+}
+.nav-item a{
+    display: block;
+    width: 204px;
+    height: 100%;
+    line-height: 42px;
+    padding-left: 30px;
+    color: #F7F8F8;
+}
+.nav-item a span{
+    float: right;
+    margin-right: 20px;
+}
+.nav-item:hover{
+    background-color: #FF6A00;
+}
+/* 二级导航 start */
+.show-wrap{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 234px;
+    width: 912px;
+    height: 420px;
+    background: #F7F8F8;
+    box-shadow: 4px 60px 40px 5px .1;
+    padding: 20px;
+    z-index: 5;
+}
+.nav-item:hover .show-wrap{
+    display: block;
+    box-shadow: 4px 20px 40px 5px rgb(0 0 0 / 10%);
+}
+.show-wrap-phone{
+    width: 100%;
+    height: 100%;
+}
+.show-wrap-phone li{
+    width: 305px;
+    height: 95px;
+}
+.show-wrap-phone img{
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+.show-wrap-phone h3{
+    display: inline-block;
+    font-weight: 400;
+    font-size: 14px;
+}
+/* 二级导航 end */
+
+/* banner 图片部分 start */
+.banner-img{
+    position: absolute;
+    width: 1226px;
+    height: 460px;
+    overflow: hidden;
+}
+.banner-list{
+    position: absolute;
+    top: 0;
+    left: 0px;
+    height: 460px;
+}
+.banner-list li{
+    float: left;
+}
+.banner-list img{
+     width: 1226px;
+    height: 460px;
+}
+.prve,
+.next{
+    z-index: 2;
+    display: block;
+    width: 40px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 30px;
+    color: #D7D7D7;
+}
+.prve:hover,
+.next:hover{
+    background: rgba(120,120,120 ,.4);
+    color: #FBFBFB;
+}
+.prve{
+    position: absolute;
+    top: 50%;
+    left: 234px;
+    transform: translateY(-50%);
+}
+.next{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+.banner-img ol{
+    position: absolute;
+    bottom: 20px;
+    left: 700px;
+}
+.banner-img ol li{
+    float: left;
+    margin-left: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: black;
+    cursor: pointer;
+}
+

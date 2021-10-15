@@ -1,4 +1,7 @@
 import axios from 'axios'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 
 
 export function request(config) {
@@ -9,10 +12,15 @@ export function request(config) {
     })
 
     instancel.interceptors.request.use(config => {
+        NProgress.start();
 
         config.headers.Authorization = sessionStorage.getItem('token')
 
+        return config
+    })
 
+    instancel.interceptors.response.use(config => {
+        NProgress.done();
         return config
     })
 
@@ -27,10 +35,14 @@ export function setRequest(config) {
     })
 
     instancel.interceptors.request.use(config => {
-
+        NProgress.start();
         config.headers.Authorization = sessionStorage.getItem('token')
+        return config
+    })
 
 
+    instancel.interceptors.response.use(config => {
+        NProgress.done();
         return config
     })
 

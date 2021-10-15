@@ -8,6 +8,8 @@ const User = () => import('views/home/pages/User')
 const Roles = () => import('views/home/pages/Roles')
 const Rights = () => import('views/home/pages/Rights')
 const Categories = () => import('views/home/pages/Categories')
+const Order = () => import('views/home/pages/Order')
+const Reports = () => import('views/home/pages/Reports')
 
 Vue.use(Router)
 
@@ -52,6 +54,17 @@ const routes = [
         name: 'categories',
         component: Categories
 
+      },
+      {
+        path: "/orders",
+        name: 'orders',
+        component: Order
+
+      },
+      {
+        path: "/reports",
+        name: 'reports',
+        component: Reports
       }
     ]
   }

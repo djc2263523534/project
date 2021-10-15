@@ -18,8 +18,13 @@ import {
     Dialog,
     Tag,
     Tree,
-    Select, Option
+    Select, Option,
+    Cascader,
+    Timeline, TimelineItem
 } from 'element-ui';
+Vue.use(Timeline)
+Vue.use(TimelineItem)
+Vue.use(Cascader)
 Vue.use(Option)
 Vue.use(Select)
 Vue.use(Tree)

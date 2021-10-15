@@ -33,8 +33,15 @@
           <el-tag type="danger" v-if="scope.row.cat_level == 2">三级</el-tag>
         </template>
         <template slot="opt" slot-scope="scope">
-          <el-button type="primary" size="mini">编辑</el-button>
-          <el-button type="danger" size="mini">删除</el-button>
+          <el-button type="primary" size="mini" @click="editCate(scope.row)"
+            >编辑</el-button
+          >
+          <el-button
+            type="danger"
+            size="mini"
+            @click="deleteCate(scope.row.cat_id)"
+            >删除</el-button
+          >
         </template>
       </zk-table>
       <el-pagination
@@ -75,6 +82,37 @@
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="saveCate">确 定</el-button>
+      </span>
+    </el-dialog>
+
+    <!-- 编辑 -->
+
+    <el-dialog
+      title="提示"
+      :visible.sync="editdialogVisible"
+      width="50%"
+      :before-close="handleClose"
+    >
+      <el-form
+        :model="editForm"
+        :rules="rules"
+        ref="editRef"
+        label-width="100px"
+        class="demo-ruleForm"
+      >
+        <el-form-item label="分类名称" prop="name">
+          <el-input v-model="editForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="父级分类" prop="cate">
+          <el-input v-model="editForm.cate"></el-input>
+        </el-form-item>
+      </el-form>
+
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="editdialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="editdialogVisible = false"
+          >确 定</el-button
+        >
       </span>
     </el-dialog>
   </div>
@@ -125,6 +163,11 @@ export default {
         name: [{ required: true, message: "请输入分类名称", trigger: "blur" }],
         cate: [{ required: true, message: "请输入父级分类", trigger: "blur" }],
       },
+      editForm: {
+        name: "",
+        cate: "",
+      },
+      editdialogVisible: false,
     };
   },
   methods: {
@@ -153,10 +196,23 @@ export default {
       this.dialogVisible = true;
     },
     saveCate() {
-      this.$refs["ruleForm"].validate((vaild) => {
+      this.$refs["ruleForm"].validate(async (vaild) => {
         if (!vaild) return this.$message.error("添加分类失败");
-        setRequest().post(`categories`)
+        const { data: res } = await setRequest().get(`categories`, {
+          params: {
+            type: 2,
+          },
+        });
+        console.log(res);
       });
+    },
+    editCate(scope) {
+      this.editdialogVisible = true;
+      console.log(scope);
+      setRequest().get(`categories/${scope.id}`);
+    },
+    deleteCate(id) {
+      console.log(id);
     },
   },
   created() {
